@@ -2,7 +2,7 @@
 
 ## 🎯 Visão Geral do Projeto
 
-Este é um projeto de portfólio de Data Science focado em **classificação** para prever o *churn* (cancelamento) de clientes em uma empresa de telecomunicações.
+Este é um projeto de Data Science focado em **classificação** para prever o *churn* (cancelamento) de clientes em uma empresa de telecomunicações.
 
 O objetivo principal é construir um modelo de machine learning robusto, desde a limpeza e análise exploratória dos dados até a modelagem e interpretação dos resultados. O projeto demonstra habilidades em:
 
@@ -56,7 +56,8 @@ Foi utilizado um `ColumnTransformer` para aplicar transformações específicas 
 
 ### Performance dos Modelos
 
-Todos os modelos apresentaram excelente performance, com scores de **ROC AUC em torno de 0.84**, muito superiores ao baseline aleatório (0.50). O LightGBM e o Random Forest tiveram um leve destaque, como visto na Curva ROC (imagem no topo deste README).
+Todos os modelos apresentaram excelente performance, com scores de **ROC AUC em torno de 0.84**, muito superiores ao baseline aleatório (0.50). O LightGBM e o Random Forest tiveram um leve destaque, como visto na Curva ROC.
+![Curva ROC Comparativa dos Modelos](curva_ROC.png)
 
   * **LightGBM: AUC = 0.843**
   * **Random Forest: AUC = 0.842**
@@ -82,6 +83,30 @@ A análise exploratória (EDA) e a interpretação do modelo (Feature Importance
 
 -----
 
+## 🚀 Recomendações Estratégicas para o Negócio
+Com base nos resultados do modelo e na análise exploratória, este projeto permite extrair ações de negócio claras para reduzir o churn:
+
+1. Ação Imediata: Foco Total nos Contratos "Mês a Mês"
+* O Problema: O churn é massivamente concentrado em clientes com contratos "Mês a Mês" (Month-to-month). Este é o grupo de maior risco.
+
+  Recomendação: Criar campanhas de retenção agressivas e direcionadas para migrar esses clientes para contratos anuais ou de dois anos.
+
+  Ação Prática: Oferecer um desconto na fatura, um upgrade de serviço (ex: mais dados) ou bônus de fidelidade para quem fizer a migração. O custo desse incentivo é quase certamente menor que o custo de adquirir um novo cliente.
+
+2. Otimizar Métodos de Pagamento: Incentivar o Pagamento Automático
+* O Problema: O pagamento com "Cheque Eletrônico" (Electronic check) tem o dobro de churn dos outros métodos. Pagamentos automáticos (Cartão de Crédito e Transferência Bancária) são os mais "fiéis".
+
+  Recomendação: Facilitar e incentivar ativamente a troca de "Cheque Eletrônico" para métodos de pagamento automáticos.
+
+  Ação Prática: Oferecer um pequeno desconto único (ex: 5% na próxima fatura) para clientes que cadastrarem o cartão de crédito ou débito automático. A "fricção" do pagamento manual mensal remove o cliente da inércia e o faz repensar o serviço todo mês.
+
+3. Revisar a Proposta de Valor para Clientes "Solitários"
+* O Problema: Clientes sem parceiros e sem dependentes têm uma taxa de churn significativamente maior, como visto na EDA.
+
+  Recomendação: Investigar por que esse grupo está saindo. Os pacotes de serviço atuais podem ser muito focados em "famílias".
+
+  Ação Prática: Avaliar a criação de planos ou benefícios mais atraentes para o público individual, que pode não perceber o mesmo valor nos pacotes atuais.
+
 ## 🛠️ Tecnologias Utilizadas
 
   * Python
@@ -104,4 +129,5 @@ A análise exploratória (EDA) e a interpretação do modelo (Feature Importance
     pip install pandas numpy matplotlib seaborn scikit-learn lightgbm openpyxl
     ```
 3.  Coloque o arquivo `Telco_customer_churn.xlsx` na mesma pasta do notebook.
+
 4.  Execute o Jupyter Notebook: `Análise_churn_telco_customer.ipynb`.
